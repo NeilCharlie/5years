@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    color: white;
+    background-color: rgb(243, 157, 243);
+  }
+  
+  #bgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+  }
+  
+  #bgMusic {
+    display: none;
+  }
+  
+  /* Slideshow */
+  .slideshow-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    padding-bottom: 20px;
+  }
+  
+  .slideshow-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 4px solid white;
+    border-radius: 15px;
+
+    animation: fade 1s ease-in-out;
+  }
+  
+  @keyframes fade {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+  }
+  
+  /* Main Letter Container */
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    background-color: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 15px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.2em;
+    white-space: pre-line;
+    text-align: justify;
+  }
+  
+  /* RESPONSIVE FOR PHONES */
+  @media (max-width: 768px) {
+    .slideshow-container {
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 200px;
+      
+    }
+  
+    .content {
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      padding: 20px;
+      margin-top: 20px;
+      padding-bottom: 20px;
+    }
+  
+    h1 {
+      font-size: 1.8em;
+    }
+  
+    p {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .slideshow-container {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .content {
+      top: 65%;
+      width: 95%;
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.6em;
+    }
+  
+    p {
+      font-size: 0.95em;
+    }
+  }
+  
