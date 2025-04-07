@@ -1,8 +1,8 @@
-// Letter Content
-const letterText = `
-Hi Bebe,
+// Typing Effect
+const letterText = `To the love of my life,
 
-Happy 5th Anniversary!
+
+Happy 5th Anniversary!  Bebe! 💖
 
 Can you believe it? 1,826 days na tayong magkasama—five amazing years filled with love, lambing, kulitan, at siyempre… mga araw-araw na rides natin na kahit paulit-ulit, hindi ako nagsasawa.
 
@@ -19,24 +19,58 @@ Here’s to more years, more rides, more adventures, more food, and more love wi
 I love you so much. Always and forever.
 
 Yours forever Bebe,
-Neil Charlie Rebenque
-`;
+Neil Charlie Rebenque. 💌`;
 
-document.getElementById("letterText").innerText = letterText;
+const letterElement = document.getElementById("letterText");
+let index = 0;
 
-// Slideshow Logic
+function typeLetter() {
+  if (index < letterText.length) {
+    letterElement.innerText += letterText.charAt(index);
+    index++;
+    setTimeout(typeLetter, 50);
+  }
+}
+typeLetter();
+
+// Slideshow
 const images = [
   "images/photo1.jpeg", "images/photo2.jpeg", "images/photo3.jpeg",
   "images/photo4.jpeg", "images/photo5.jpeg", "images/photo6.jpeg",
-  "images/photo7.jpeg", "images/photo8.jpeg", "images/photo9.jpeg", 
+  "images/photo7.jpeg", "images/photo8.jpeg", "images/photo9.jpeg",
   "images/photo10.jpeg"
-  
 ];
 
-let index = 0;
+let imageIndex = 0;
 const slideshow = document.getElementById("slideshow");
 
+images.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+
 setInterval(() => {
-  index = (index + 1) % images.length;
-  slideshow.src = images[index];
-}, 3000); // change every 3 seconds
+  imageIndex = (imageIndex + 1) % images.length;
+  slideshow.src = images[imageIndex];
+}, 3000);
+
+// Accordion Logic
+const headers = document.querySelectorAll('.accordion-header');
+
+headers.forEach(header => {
+  header.addEventListener('click', () => {
+    const open = document.querySelector('.accordion-header.active');
+    if (open && open !== header) {
+      open.classList.remove('active');
+      open.nextElementSibling.style.maxHeight = null;
+    }
+
+    header.classList.toggle('active');
+    const content = header.nextElementSibling;
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+});
